@@ -1,2 +1,2 @@
 # TypeScript
-The TypeScript of BOcT
+The TypeScript Edition of BOcT
