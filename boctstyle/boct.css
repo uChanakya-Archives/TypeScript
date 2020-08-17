@@ -1,0 +1,512 @@
+:root {
+  --blk-in-dark: black;
+  --wit-in-dark: white;
+  --lit-in-dark: #eee;
+}
+
+[data-theme="light"] {
+  --blk-in-dark: white;
+  --wit-in-dark: black;
+  --lit-in-dark: black;
+}
+
+@font-face {
+  font-family: 'Quicksand';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Quicksand'), url(https://fonts.gstatic.com/s/quicksand/v21/6xK-dSZaM9iE8KbpRA_LJ3z8mH9BOJvgkP8o58a-wg.woff2) format('woff2');
+}
+@font-face {
+  font-family: 'Megrim';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Megrim'), url(https://fonts.gstatic.com/s/megrim/v10/46kulbz5WjvLqJZVam_h.woff2) format('woff2');
+}
+
+*,
+*::after,
+*::before{
+  box-sizing: border-box;
+  transition: all 0.2s linear;
+}
+
+body, html{
+  background-color: var(--blk-in-dark);
+  line-height: 1.15;
+  margin: 0px;
+  padding: 0px;
+  height: 100%;
+  min-height: 600px;
+  min-width: 300px;
+}
+body{
+  border: 6px solid var(--wit-in-dark);
+}
+
+.typespace,
+.about legend, .about p, .add-button,
+.info_content, .info_links a, #experimental, .info_close,
+.settingbar{
+  font-family: "Quicksand", sans-serif;
+}
+
+/*Loading Screen------------------------------*/
+.loader-wrapper {
+  margin: 0px;
+  padding: 0px;
+  border: 6px solid var(--wit-in-dark);
+  width: 100%;
+  min-width: 300px;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: var(--blk-in-dark);
+  display: flex;
+}
+.loader{
+  margin: auto;
+  padding: 0;
+  width: 120px;
+  height: 18px;
+  background-color: var(--blk-in-dark);
+  border: 2px solid var(--wit-in-dark);
+  box-shadow: 0 0 80px var(--wit-in-dark);
+}
+.load_bar{
+  height: 100%;
+  background-color: var(--wit-in-dark);
+  animation: load 1.6s linear;
+}
+@keyframes load{0% {width: 0%;} 35% {width: 30%;} 65% {width: 70%;} 100% {width: 101%;}
+}
+
+.load_text{
+  margin-top: 5px;
+  color: var(--wit-in-dark);
+  font-size: 13px;
+  font-family: 'Megrim';
+  font-weight: 600;
+  text-align: center;
+}
+
+
+/*-------------------------------------------------------------*/
+button{
+  outline: none;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.alll{
+  display: grid;
+  grid-template-columns: 50px 300px 60px auto 60px;
+  grid-template-rows: 5% 25% minmax(auto,calc(65% - 280px)) 280px 5%;
+  grid-template-areas: 
+    ". . . . ." 
+    ". p . c ." 
+    ". . . c ." 
+    ". a . c ." 
+    ". . . . .";
+  height: 100%;
+}
+/*header-------------------------------------------------------------*/
+.pagehead {
+  grid-area: p;
+}
+
+.heading{
+  border-bottom: 2px solid var(--wit-in-dark);
+  padding: 5px 0px 10px;
+}
+#title{
+  margin: 0;
+  color: var(--wit-in-dark);
+  font-family: 'Megrim', monospace;
+  text-align: center;
+  font-size: 40px;
+  user-select: none;
+  will-change: opacity, letter-spacing, filter;
+}
+@keyframes focus-in-expand {
+  0% {letter-spacing: -0.5em;
+      filter: blur(12px);
+      opacity: 0;
+  }
+  100% {filter: blur(0px);
+        opacity: 1;
+  }
+}
+
+/*.bot-head (or) head of the bot -------------*/
+.bot-head{
+  margin: auto;
+  padding: 10px;
+  width: 100px;
+  height: 100px;
+  text-align: center;
+  outline: none;
+}
+
+.bot-btn, .bot-btn svg{
+  width: 100%;
+  height: 100%;
+}
+.bot-btn{
+  padding: 0px;
+  animation: beepbeep 2.5s ease-in-out 5s infinite;
+}
+@keyframes beepbeep{
+  0%, 20%, 30%, 35%, 45%, 55%, 100% {transform: scale(1);}
+  25% , 50% {transform: scale(1.2);}
+  40% {transform: scale(1.1);}
+}
+.bot-btn svg{
+  fill: #ff1439;
+  transition: all 0.05s linear;
+}
+.bot-btn svg:active{
+  transform: scale(0.9);
+}
+
+/*chatter -----------------------------------------------------------*/
+.arrow_box {
+  grid-area: c;
+  display: none;
+  border-radius: 36px 0 36px 36px;
+  padding: 7px;
+  background-color: var(--wit-in-dark);
+  box-shadow: 2px 2px 20px black;
+  animation: scale-in-top 0.7s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  will-change: transform;
+}
+@keyframes scale-in-top {
+  0% {transform: scale(0);
+      transform-origin: -80px 95px;
+  }
+  100% {transform: scale(1);
+        transform-origin: -80px 95px;
+  }
+}
+
+.arrow_box:after {
+	top: 120px;
+	right: 100%;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+  border-right-color: var(--wit-in-dark);
+	border-width: 27px;
+	margin-top: -27px;
+}
+
+/*chatspace-----------------------------------*/
+.talk_box{
+  width: 100%;
+  height: calc(100% - 59px);
+  border-radius: 32px 0 0 0;
+  box-shadow: 0 0 20px inset black;
+  background-color: var(--blk-in-dark);;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+#chatspace::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.8);
+  box-shadow: inset 0 0 6px rgba(0,0,0,0.8);
+	background-color: #F5F5F5;
+}
+#chatspace::-webkit-scrollbar {
+	width: 10px;
+	background-color: #F5F5F5;
+  cursor: pointer;
+}
+#chatspace::-webkit-scrollbar-thumb {background-color: #5c5c5c;}
+
+/*message CSS---------------------------------*/
+/* BOcT talk CSS */
+.boct_talk{
+  float: left;
+  max-width: 75%;
+  min-width: 45%;
+  margin: 6px 20% 6px 4px;
+  border: 2px solid var(--wit-in-dark);
+  padding: 2px 8px 2px 8px;
+  background: #e64c63;
+}
+
+/*human talk CSS */
+.human_talk{
+  float: right;
+  max-width: 75%;
+  min-width: 30%;
+  min-height: 44px;
+  margin: 6px 4px 6px 21%;
+  background: var(--wit-in-dark);
+  padding: 2px 8px;
+}
+
+.human_talk > p ,
+.boct_talk > p {
+  color: var(--blk-in-dark);
+  font-size: 14px;
+  font-family: "Quicksand", sans-serif;
+}
+
+/*Type----------------------------------------*/
+.type_box{
+  margin: 15px auto 8px;
+  width: 85%;
+  height: 36px;
+}
+.type_box-inner {
+  width: 100%;
+  display: flex;
+}
+
+.typespace {
+  width: 100%;
+  padding: 5px;
+  height: 36px;
+  border: 3px solid var(--blk-in-dark);
+  border-right: none;
+  border-radius: 5px 0 0 5px;
+  box-shadow: 0 0 15px black;
+  outline: none;
+  background-color: white;
+  color: hsl(0,0%,35%);
+}
+.typespace:focus{
+  color: black;
+}
+
+.typespace-enter {
+  width: 40px;
+  height: 36px;
+  padding: 7px 8px 8px;
+  background: var(--blk-in-dark);
+  box-shadow: 0 0 15px black;
+  text-align: center;
+  border-radius: 0 5px 5px 0;
+  border: none;
+}
+.typespace-enter svg{
+  fill: var(--wit-in-dark);
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: all 0.03s linear;
+}
+.typespace-enter svg:active{
+  fill: #ff1439;
+  transform: scale(0.85);
+}
+
+/*about---------------------------------------------------------------*/
+.about {
+  grid-area: a;
+}
+.about fieldset{
+  border: 2px solid var(--wit-in-dark);
+  box-shadow: 0 0 15px inset black;
+  padding: 5px;
+}
+.about legend{
+  color: var(--wit-in-dark);
+  font-size: 14px;
+  padding: 1px 6px;
+  margin: 5px auto;
+  border: 2px solid black;
+  background-color: var(--blk-in-dark);
+}
+.aboutbtns{
+  display: flex;
+  justify-content: space-around;
+}
+.aboutbtns button{
+  width: 25px;
+  height: 25px;
+  padding: 0px;
+}
+.aboutbtns svg{
+  width: 100%;
+  height: 100%;
+  fill: var(--wit-in-dark);
+  transition: fill 0.1s linear !important;
+}
+.aboutbtns svg:hover{
+  fill: #ff1439;
+}
+.add-button{
+  display: block;
+  color: var(--blk-in-dark);
+  background-color: var(--wit-in-dark);
+  margin: 5px auto;
+  font-weight: 600;
+}
+.about p{
+  text-align: center;
+  color: var(--wit-in-dark);
+  font-size: 14px;
+  margin: 10px 0;
+}
+
+.release{
+  font-family: 'Arial', monospace !important;
+  font-size: 10px !important;
+  margin: 15px 0px 10px !important;
+  letter-spacing: 2px;
+}
+
+/*Info popup----------------------------------------*/
+#info_popup{
+  display: none;
+  margin: auto;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-width: 300px;
+  height: 100%;
+  padding: 30px 10px;
+  background-color: rgba(0,0,0,0.4);
+}
+.info_window{
+  width: 70%;
+  height: 500px;
+  margin: auto;
+  padding: 10px 10px 0;
+  background-color: var(--wit-in-dark);
+  border-radius: 25px 0 25px 25px;
+  text-align: center;
+  animation: slide-in-fwd-center 0.5s ease-in both;
+}
+@keyframes slide-in-fwd-center {from {opacity: 0;} to {opacity: 1;}}
+
+.info_content{
+  background-color: var(--blk-in-dark);
+  border-radius: 20px 0 0 20px;
+  width: 100%;
+  height: 425px;
+  padding: 0 5px;
+  overflow-y: auto;
+  color: var(--wit-in-dark);
+  text-align: left;
+}
+
+.info_links{
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+}
+.info_links a{
+  display: inline-block;
+  padding: 8px 5px 5px;
+  text-decoration: none;
+  font-size: 14px;
+  color: var(--blk-in-dark);
+}
+#experimental{
+  display: block;
+  color: var(--wit-in-dark);
+  background-color: var(--blk-in-dark);
+  margin: 5px auto 15px;
+  padding: 5px;
+  font-weight: 600;
+}
+#experimental:hover, #experimental:active{
+  background-color: var(--wit-in-dark);
+  color: var(--blk-in-dark);
+
+}
+.info_close{
+  color: var(--wit-in-dark);
+  font-size: 14px;
+  background-color: transparent;
+}
+
+/*Setting off-canvas----------------------------------------------*/
+.settingbar {
+  position: fixed;
+  z-index: 5;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 360px;
+  transform: translate3d(-365px, 0, 0);
+  transition: transform 0.4s ease-in-out;
+  will-change: transform;
+  box-shadow: 0 0 30px black;
+  background-color: var(--lit-in-dark);
+  color: var(--blk-in-dark);
+  text-align: center;
+}
+.show-sidebar .settingbar {
+  transform: translate3d(0, 0, 0);
+}
+
+.settingbar h2{
+  padding: 10px 0;
+  margin: 0;
+  border-bottom: 1px solid var(--blk-in-dark);
+  font-family: 'Megrim';
+}
+
+/* settings-----------------------------------*/
+.settingbar label{
+  display: block;
+  user-select: none;
+  width: 100%;
+  margin: 0;
+  padding: 10px 5px;
+  border-bottom: 1px solid var(--blk-in-dark);
+}
+.settingbar label:hover{
+  color: white;
+  background-color: #ff1439;
+}
+
+.stg_contain input {
+  display: inline-block;
+  margin: 0;  
+  height: 16px;
+  width: 16px;
+  position: relative;
+  top: 2px;
+  left: 5px;
+}
+
+/* LocalStorage Reset */
+#cokieClear{
+  width: 100%;
+  height: 50px;
+}
+#cokieClear button{
+  font-family: 'Quicksand';
+  color: var(--blk-in-dark);
+  border: 1px solid var(--blk-in-dark);
+  margin: 8px 5px 4px;
+}
+#cokieClear button:hover{
+  color: var(--wit-in-dark);
+  background-color: var(--blk-in-dark);
+}
+#cokieClear p{
+  margin: 0;
+  font-size: 11px;
+}
+/*
+*-----------------------------------------------------------
+* Animations: scale-in-top and focus-in-expand.
+* generated by http://animista.net
+*-----------------------------------------------------------
+And also: Thanks to
+->  https://redstapler.co/add-loading-animation-to-website/
+*/
