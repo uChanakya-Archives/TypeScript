@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "outDir": "lib",
+    "target": "ES6",
+    "allowJs": true
+  },
+  "include": [
+    "typescript/**/*"
+  ]
+}

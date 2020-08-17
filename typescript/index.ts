@@ -40,7 +40,7 @@ function scroll_update() {
 
 //------------------------------------------------------------------
 //Boct reply js
-function talk_div_boct(talkContent) {
+function talk_div_boct(talkContent: string) {
   const newDIV = document.createElement("div");
   const attr = document.createAttribute("class");
   const talk_create = document.createElement("p");
@@ -57,7 +57,7 @@ function talk_div_boct(talkContent) {
 const SEND_MSG_TO_BOCT = document.getElementById("typespace-enter-id");
 SEND_MSG_TO_BOCT.addEventListener("click", talk_div_hooman);
 function talk_div_hooman() {
-  const chat_boxx = document.querySelector(".typespace");
+  const chat_boxx = <HTMLInputElement> document.querySelector(".typespace");
   var chat_content = chat_boxx.value;
   if(chat_content == '') { chat_content = '*empty*'; }
   const newDIV = document.createElement("div");
@@ -105,7 +105,7 @@ const offcanvas = {
 }
 
 document.querySelector('#settingg').addEventListener('click', offcanvas.toggle);
-body.addEventListener('click', (e)=>{
+body.addEventListener('click', (e: MouseEvent)=>{
   if(offcanvas.check() && alll.contains(e.target)){
       e.preventDefault();
       offcanvas.hide();
@@ -118,7 +118,7 @@ const ipopup = document.getElementById("info_popup");
 
 document.getElementById("i-btn").onclick = ()=> { ipopup.style.display = "block"; }
 document.getElementsByClassName("info_close")[0].onclick = ()=> { ipopup.style.display = "none"; }
-window.onclick = (e)=>{
+window.onclick = (e: { target: HTMLElement; })=>{
   if (e.target == ipopup) {
     ipopup.style.display = "none";
   }
@@ -126,7 +126,7 @@ window.onclick = (e)=>{
 
 
 //Toggle Dark Mode------------------------------
-const toggler = document.querySelector('.toggleTheme');
+const toggler = <HTMLInputElement> document.querySelector('.toggleTheme');
 const currentThemeCokie = localStorage.getItem('theme');
 
 if (currentThemeCokie) {

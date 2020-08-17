@@ -1,5 +1,7 @@
 class directReplies {
-  constructor(inWrds,outsen) {
+  words: any;
+  reply: () => void;
+  constructor(inWrds: string[],outsen: string) {
     this.words = inWrds;
     this.reply = ()=>{talk_div_boct(outsen);}
   }
@@ -55,7 +57,7 @@ const readso = {
 
 const searchStuff = {
   words: ['google','bing','youtube','duckduckgo'],
-  reply: (sc)=> {
+  reply: (sc: string)=> {
     if(sc.slice(0,6)=='google') {
       let ss = sc.slice(7);
       talk_div_boct('Ok, Searching Google for ' + ss);
@@ -79,11 +81,11 @@ const searchStuff = {
   }
 }
 
-function rdmZ(m,n) { return Math.floor(Math.random() * (n - m + 1) ) + m; }
+function rdmZ(m: number,n: number) { return Math.floor(Math.random() * (n - m + 1) ) + m; }
 const dice = {
   words: ['roll a dice', 'roll dice'],
   reply: ()=>{
-    talk_div_boct(rdmZ(1,6));
+    talk_div_boct(`${rdmZ(1,6)}`);
   }
 }
 
@@ -98,7 +100,7 @@ const coin = {
 const readables = [intro, readage , readempty , readannoy, readNo, readok, readso, dice, coin];
 const readables2 = [searchStuff];
 
-function boct_study_chat(studycontent) {
+function boct_study_chat(studycontent: string) {
   for(let i = 0; i < readables.length; i++) {
   loop1:
     for (let j = 0; j < readables[i].words.length; j++) {
@@ -156,7 +158,7 @@ function boct_study_chat(studycontent) {
         talk_div_boct('MeooW!.....MeeeeeeWww!');
         break;
       case 'dice':
-        talk_div_boct(rdmZ(1,6));
+        talk_div_boct(`${rdmZ(1,6)}`);
         break;
       case 'coin':
         coin.reply();
