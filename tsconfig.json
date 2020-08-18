@@ -2,7 +2,7 @@
   "compilerOptions": {
     "outDir": "lib",
     "target": "ES6",
-    "allowJs": true
+    "allowJs": false
   },
   "include": [
     "typescript/**/*"
