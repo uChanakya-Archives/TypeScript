@@ -3,7 +3,8 @@
   "version": "2.4.0",
   "license": "MIT",
   "scripts": {
-    "start": "public/index.html"
+    "start": "index.html",
+    "tsc": "tsc"
   },
   "devDependencies": {
     "typescript": "^4.0.2"

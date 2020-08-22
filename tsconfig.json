@@ -1,8 +1,8 @@
 {
-  "include": ["src"],
+  "include": ["private"],
   "compilerOptions": {
     "strictNullChecks": false,
     "lib": ["ES6","DOM"],
-    "outDir": "public"
+    "outDir": "boct_Scripts"
   }
 }
