@@ -21,11 +21,11 @@
   <link rel="stylesheet" href="boctstyle/boctmediaq.css" media="screen and (max-width: 960px)">
 
   <!--Scripts-->
-  <script defer src="../src/vue.min.js"></script>
-  <script defer src="../src/index.js"></script>
-  <script defer src="../src/settings.js"></script>
-  <script defer src="../src/talk-script.js"></script>
-  <script defer src="../src/unit-convert.js"></script>
+  <script defer src="vue.min.js"></script>
+  <script defer src="index.js"></script>
+  <script defer src="settings.js"></script>
+  <script defer src="talk-script.js"></script>
+  <script defer src="unit-convert.js"></script>
 
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-172329807-1"></script>
@@ -84,7 +84,7 @@
             </svg></button>
         </div>
         <p class="release">Target Version 2.4</p>
-        <p class="release">ts 2</p>
+        <p class="release">ts 3</p>
         <hr>
         <p>BOcT is a Static Browser Chatbot</p>
         <p>It's currently in Early development stages</p>
@@ -150,10 +150,7 @@
     <label class="stg_contain">Disable Load Screen:
       <input type="checkbox" id="stg_disable_load"></label>
     
-    <div id="cokieClear">
-      <button class="stg_btn" v-on:click="cokieReset">{{ cokieClearBtn }}</button>
-      <p>{{ cookieInfo }}</p>
-    </div>
+
 
     <button id="stg_clearchat" class="stg_btn">Clear the Chat</button>
   </aside>

@@ -1,6 +1,6 @@
 //Settings----------------------------------------------------------
 //1.open chatbox by default
-const stg_chatbox = document.getElementById("stg_chat_open_default");
+const stg_chatbox = <HTMLInputElement> document.getElementById("stg_chat_open_default");
 const stg_chatbox_cokie = localStorage.getItem('chatbox');
 
 if (stg_chatbox_cokie == 'open'){
@@ -25,7 +25,7 @@ stg_chatbox.addEventListener('click',()=>{
 });
 
 //2.Diable Loading Screen
-const stg_load = document.getElementById("stg_disable_load");
+const stg_load = <HTMLInputElement> document.getElementById("stg_disable_load");
 const stg_load_cokie = localStorage.getItem('loading');
 
 if (stg_load_cokie == 'no'){
@@ -42,6 +42,7 @@ stg_load.addEventListener('click',()=>{
 
 //------others----------------------------------
 //0. Clear LocalStorage (Vue Powered)
+/*
 var cookieClearer = new Vue({
   el: '#cokieClear',
   data: {
@@ -63,3 +64,9 @@ document.getElementById('stg_clearchat').addEventListener('click',()=>{
   document.getElementById("chatspace").innerHTML = '';
   setTimeout(()=>{talk_div_boct('Hoi')},1000);
 })
+
+    <div id="cokieClear">
+      <button class="stg_btn" v-on:click="cokieReset">{{ cokieClearBtn }}</button>
+      <p>{{ cookieInfo }}</p>
+    </div>
+*/

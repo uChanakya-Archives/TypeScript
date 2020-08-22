@@ -1,4 +1,4 @@
-function chat_process(sentence){
+function chat_process(sentence: string){
   const chat_TL = sentence.trim().toLowerCase();
   const chat_T = sentence.trim();
 
@@ -15,7 +15,7 @@ function chat_process(sentence){
 }
 
 
-function boct_general_reply(studycontent) {
+function boct_general_reply(studycontent: string) {
   const readables = [intro, readage , readempty , readannoy, readNo, readok, readso, dice, coin];
   const readables2 = [searchStuff];
 
@@ -40,7 +40,7 @@ function boct_general_reply(studycontent) {
 }
 
 
-function DOt_commands(word){
+function DOt_commands(word: string){
   let comm = word.slice(1,5);
   switch (comm) {
     case "":
@@ -89,7 +89,7 @@ function DOt_commands(word){
   }
 }
 
-function rdmZ(m,n) {
+function rdmZ(m: number,n: number) {
   return Math.floor(Math.random() * (n - m + 1) ) + m;
 }
 //Try to write a function that takes as many parameters 
@@ -105,7 +105,9 @@ function replyRandom([x,y]){
 }
 //-------------------------------------------
 class directReplies {
-  constructor(inWrds,outsen) {
+  words: string[];
+  reply: () => void;
+  constructor(inWrds: string[],outsen: string) {
     this.words = inWrds;
     this.reply = ()=>{talk_div_boct(outsen);}
   }
@@ -161,7 +163,7 @@ const readso = {
 
 const searchStuff = {
   words: ['google','bing','youtube','duckduckgo'],
-  reply: (sc)=> {
+  reply: (sc: string)=> {
     if(sc.slice(0,6)=='google') {
       let ss = sc.slice(7);
       talk_div_boct('Ok, Searching Google for ' + ss);

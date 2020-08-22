@@ -1,7 +1,8 @@
 {
-  "include": ["src/*"],
+  "include": ["src"],
   "compilerOptions": {
-    "strict": true,
-    "lib": ["dom", "es2015"]
+    "strictNullChecks": false,
+    "lib": ["ES6","DOM"],
+    "outDir": "public"
   }
 }

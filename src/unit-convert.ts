@@ -1,7 +1,7 @@
-function unit_convert(usertyped){
+function unit_convert(usertyped: string){
   const ucs_data = usertyped.split(' ');
 
-  if(ucs_data.length == 5){ TheConverter(ucs_data[1] , ucs_data[2] , ucs_data[4]); }
+  if(ucs_data.length == 5){ TheConverter(Number(ucs_data[1]) , ucs_data[2] , ucs_data[4]); }
 
   else if(ucs_data.length == 4){
     let uVal = parseFloat(ucs_data[1]);
@@ -16,7 +16,7 @@ function unit_convert(usertyped){
 }
 
 
-function TheConverter(x , a , b) {
+function TheConverter(x: number , a: string , b: string) {
   let from_unit = getUnit(a);
   let to_unit = getUnit(b);
 
@@ -41,7 +41,7 @@ function TheConverter(x , a , b) {
 }
 
 
-function getUnit(u) {
+function getUnit(u: any) {
   const Categories = [Lengths,Areas,Mass,Temperatures,Volume];
   var unit_details, i=0;
 
@@ -49,7 +49,7 @@ function getUnit(u) {
   while(i < Categories.length && (!unit_details)){
     const CategoryType = Categories[i];
     let obj = Object.keys(CategoryType);
-    obj.forEach(j => {
+    obj.forEach((j) => {
       if( CategoryType[j].unit.includes(u) ) {
         let pre_unit_detail = {
           Available: true,
@@ -136,18 +136,18 @@ const Areas = {
 const Temperatures = {
   celsius: {
     unit: ['C','celsius','c'],
-    con_trnsTo: (x)=>{ return Number(x); },
-    con_trnsFro: (x)=>{ return Number(x); }
+    con_trnsTo: (x: any)=>{ return Number(x); },
+    con_trnsFro: (x: any)=>{ return Number(x); }
   },
   fahrenheit: {
     unit: ['F','fahrenheit','f'],
-    con_trnsTo: (x)=>{ return (x - 32) / 1.8; },
-    con_trnsFro: (x)=>{ return ((x * 1.8) + 32); }
+    con_trnsTo: (x: number)=>{ return (x - 32) / 1.8; },
+    con_trnsFro: (x: number)=>{ return ((x * 1.8) + 32); }
   },
   Kelvin: {
     unit: ['K','kelvin','k'],
-    con_trnsTo: (x)=>{ return x - 273.15;},
-    con_trnsFro: (x)=>{ return x + 273.15;}
+    con_trnsTo: (x: number)=>{ return x - 273.15;},
+    con_trnsFro: (x: number)=>{ return x + 273.15;}
   },
 }
 
