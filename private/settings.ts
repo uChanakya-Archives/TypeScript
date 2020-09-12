@@ -40,23 +40,13 @@ stg_load.addEventListener('click',()=>{
   stg_load.checked == true ? localStorage.setItem('loading', 'no') : localStorage.setItem('loading','yes');
 });
 
-//------others----------------------------------
-//0. Clear LocalStorage (Vue Powered)
-/*
-var cookieClearer = new Vue({
-  el: '#cokieClear',
-  data: {
-    cookieInfo: 'This will clear your localStorage Data for this App',
-    cokieClearBtn: 'Clear your Settings'
-  },
-  methods: {
-    cokieReset: function() {
-      localStorage.removeItem("theme");
-      localStorage.removeItem("chatbox");
-      localStorage.clear();
-      this.cookieInfo = "- Cleared. Reload the Page -";
-    }
-  }
+
+//0. Clear LocalStorage
+const stg_cokieClear = <HTMLButtonElement> document.getElementsByClassName("stg_btn")[0];
+stg_cokieClear.addEventListener('click',()=>{
+  localStorage.removeItem("theme");
+  localStorage.removeItem("chatbox");
+  localStorage.clear();
 })
 
 //0a. Clear all the conversation
@@ -64,9 +54,3 @@ document.getElementById('stg_clearchat').addEventListener('click',()=>{
   document.getElementById("chatspace").innerHTML = '';
   setTimeout(()=>{talk_div_boct('Hoi')},1000);
 })
-
-    <div id="cokieClear">
-      <button class="stg_btn" v-on:click="cokieReset">{{ cokieClearBtn }}</button>
-      <p>{{ cookieInfo }}</p>
-    </div>
-*/

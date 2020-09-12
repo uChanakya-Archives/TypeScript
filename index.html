@@ -20,6 +20,13 @@
   <link rel="stylesheet" href="boctstyle/boct.css">
   <link rel="stylesheet" href="boctstyle/boctmediaq.css" media="screen and (max-width: 960px)">
 
+  <!--PWA-->
+  <script defer src="boct_Scripts/PWA.js"></script>
+  <meta name="application-name" content="The BOcT">
+  <meta name="theme-color" content="#E64C63"/>
+  <link rel="manifest" type="application/manifest+json; charset=utf-8" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" sizes="128x128" href="/boctstyle/icons/robot128.png">
+
   <!--Scripts-->
   <script defer src="boct_Scripts/index.js"></script>
   <script defer src="boct_Scripts/settings.js"></script>
@@ -82,9 +89,8 @@
             <path d="M8 256c0 136.966 111.033 248 248 248s248-111.034 248-248S392.966 8 256 8 8 119.033 8 256zm248 184V72c101.705 0 184 82.311 184 184 0 101.705-82.311 184-184 184z"/>
             </svg></button>
         </div>
-        <p class="release">Target Version 2.4</p>
-        <p class="release">ts 4</p>
-        <hr>
+        <p class="release">Target Version 2.4 | ts 5</p>
+        <button class="add-button">Install</button><hr>
         <p>BOcT is a Static Browser Chatbot</p>
         <p>It's currently in Early development stages</p>
         <p>Future Updates to BOcT can make it perform basic Maths, more Unit Conversions, Maybe suggest you some Movies...</p>
@@ -94,8 +100,7 @@
 
   <!-- Fake Loading screen --->
   <div class="loader-wrapper" id="loader">
-    <div class="loader">
-      <div class="load_bar" id="barr"></div>
+    <div class="loader"><div class="load_bar" id="barr"></div>
       <div class="load_text" id="textt">BOcT Loading...</div>
     </div>
   </div>
@@ -148,8 +153,8 @@
 
     <label class="stg_contain">Disable Load Screen:
       <input type="checkbox" id="stg_disable_load"></label>
-    
 
+    <button class="stg_btn">Clear your Settings</button>
 
     <button id="stg_clearchat" class="stg_btn">Clear the Chat</button>
   </aside>

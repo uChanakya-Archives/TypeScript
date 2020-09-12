@@ -1,5 +1,3 @@
-//------------------------------------------------------------------
-//Js for index.html
 function log(x: any){ console.log(x) }
 
 
@@ -56,7 +54,7 @@ document.getElementById("typespace-enter-id").addEventListener("click", talk_div
 
 function talk_div_hooman() {
   const chat_boxx = <HTMLInputElement> document.querySelector(".typespace");
-  var chat_content = chat_boxx.value;
+  let chat_content = chat_boxx.value;
   if(chat_content == '') { chat_content = '*empty*'; }
   const newDIV = document.createElement("div");
   const talk_create = document.createElement("p");
@@ -72,7 +70,7 @@ function talk_div_hooman() {
   chat_process(chat_content);
 }
 
-//------------------------------------------------------------------
+/*------------------------------------------------------------------*/
 
 var click_count = 0;
 function BOcT_annoy_clicks() {

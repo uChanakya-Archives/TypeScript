@@ -1,70 +1,10 @@
-function unit_convert(usertyped) {
-    var ucs_data = usertyped.split(' ');
-    if (ucs_data.length == 5) {
-        TheConverter(Number(ucs_data[1]), ucs_data[2], ucs_data[4]);
+var unit_factor = (function () {
+    function unit_factor(x, y) {
+        this.unit = x;
+        this.con_factor = y;
     }
-    else if (ucs_data.length == 4) {
-        var uVal = parseFloat(ucs_data[1]);
-        var uValLeng = String(uVal).replace('.', ' ').length;
-        var uUnit = ucs_data[1].slice(uValLeng);
-        TheConverter(uVal, uUnit, ucs_data[3]);
-    }
-    else {
-        talk_div_boct('x_x');
-    }
-}
-function TheConverter(x, a, b) {
-    var from_unit = getUnit(a);
-    var to_unit = getUnit(b);
-    if (from_unit.Available && to_unit.Available) {
-        if (from_unit.Category == to_unit.Category) {
-            if (from_unit.con_factor && to_unit.con_factor) {
-                var result = x * (from_unit.con_factor / to_unit.con_factor);
-                return talk_div_boct(result + " " + b);
-            }
-            else if (from_unit.con_trnsTo && to_unit.con_trnsFro) {
-                var SIval = from_unit.con_trnsTo(x);
-                var result = to_unit.con_trnsFro(SIval);
-                return talk_div_boct(result + " " + b);
-            }
-        }
-        else {
-            return replyRandom(['-_-', 'Conversions do not work that way']);
-        }
-    }
-    else {
-        return talk_div_boct('Something is very Wrong here.');
-    }
-}
-function getUnit(u) {
-    var Categories = [Lengths, Areas, Mass, Temperatures, Volume];
-    var unit_details, i = 0;
-    var _loop_1 = function () {
-        var CategoryType = Categories[i];
-        var obj = Object.keys(CategoryType);
-        obj.forEach(function (j) {
-            if (CategoryType[j].unit.includes(u)) {
-                var pre_unit_detail = {
-                    Available: true,
-                    UserUnit: u,
-                    Category: i
-                };
-                unit_details = Object.assign(pre_unit_detail, CategoryType[j]);
-            }
-        });
-        i++;
-    };
-    //  for (let i = 0; i < Categories.length; i++) {
-    while (i < Categories.length && (!unit_details)) {
-        _loop_1();
-    }
-    if (!unit_details) {
-        unit_details = { Available: false };
-    }
-    return unit_details;
-}
-// 1 x is equal to con_factor y (x is a unit; y is respective SI/base unit) 
-//Ex: 1 mm is equal to 1/1000 m
+    return unit_factor;
+}());
 var Lengths = {
     m: {
         unit: ['m', 'meter', 'meters', 'metre'],

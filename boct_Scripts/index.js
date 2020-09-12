@@ -1,5 +1,3 @@
-//------------------------------------------------------------------
-//Js for index.html
 function log(x) { console.log(x); }
 var body = document.querySelector('body');
 var alll = document.querySelector('.alll');
@@ -23,13 +21,10 @@ function BOcT_open() {
     CLICK_BOT.removeEventListener("click", BOcT_open);
     CLICK_BOT.addEventListener("click", BOcT_annoy_clicks);
 }
-//scroll to bottom after a new message
 function scroll_update() {
     var chat_scroll = document.getElementById("chatspace");
     chat_scroll.scrollTop = chat_scroll.scrollHeight;
 }
-//------------------------------------------------------------------
-//Boct reply js
 function talk_div_boct(talkContent) {
     var newDIV = document.createElement("div");
     var talk_create = document.createElement("p");
@@ -40,7 +35,6 @@ function talk_div_boct(talkContent) {
     newDIV.appendChild(talk_create);
     scroll_update();
 }
-//User reply js
 document.getElementById("typespace-enter-id").addEventListener("click", talk_div_hooman);
 function talk_div_hooman() {
     var chat_boxx = document.querySelector(".typespace");
@@ -59,7 +53,6 @@ function talk_div_hooman() {
     chat_boxx.value = "";
     chat_process(chat_content);
 }
-//------------------------------------------------------------------
 var click_count = 0;
 function BOcT_annoy_clicks() {
     click_count += 1;
@@ -71,7 +64,6 @@ function BOcT_annoy_clicks() {
 talk_div_boct("Hi, I can partially understand you. Maybe, say hi to me or ask my age. But, Don't call me an idiot");
 var dLocation = document.location;
 document.getElementById('experimental').addEventListener('click', function () { dLocation = "/Experimental/"; });
-//Toggle Off-Canvas for Settings------------------------------------
 var offcanvas = {
     show: function () { body.classList.add('show-settings'); },
     hide: function () { body.classList.remove('show-settings'); },
@@ -85,7 +77,6 @@ body.addEventListener('click', function (e) {
         offcanvas.hide();
     }
 }, true);
-//info popup--------------------------------------
 var ipopup = document.getElementById("info_popup");
 document.getElementById("i-btn").onclick = function () { ipopup.style.display = "block"; };
 document.getElementsByClassName("info_close")[0].addEventListener('click', function () {
@@ -96,7 +87,6 @@ window.addEventListener('click', function (e) {
         ipopup.style.display = "none";
     }
 });
-//Toggle Dark Mode------------------------------
 var toggler = document.querySelector('.toggleTheme');
 var currentThemeCokie = localStorage.getItem('theme');
 if (currentThemeCokie) {
